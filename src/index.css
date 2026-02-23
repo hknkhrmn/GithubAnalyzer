@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* temel sıfırlama */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #080808;
+  color: #e8e0d8;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* scrollbar'ı güzelleştiriyoruz */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0a08;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff2d00;
+}
+
+/* glitch efekti - her iki başlık için de çalışıyor */
+.glitch-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* kırmızı kayma */
+.glitch-wrap::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ff2d00;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  animation: glitch1 5s infinite;
+}
+
+/* turuncu kayma */
+.glitch-wrap::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffb347;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  animation: glitch2 5s infinite;
+}
+
+@keyframes glitch1 {
+  0%,88%,100% { transform: translate(0); opacity: 0; }
+  90%  { transform: translate(-5px, 2px);  opacity: 1; }
+  92%  { transform: translate(5px, -2px);  opacity: 1; }
+  94%  { transform: translate(-3px, 0);    opacity: 0.8; }
+  96%  { transform: translate(0);          opacity: 0; }
+}
+
+@keyframes glitch2 {
+  0%,84%,100% { transform: translate(0); opacity: 0; }
+  86%  { transform: translate(5px, 3px);   opacity: 1; }
+  88%  { transform: translate(-5px, -3px); opacity: 1; }
+  90%  { transform: translate(2px, 0);     opacity: 0.8; }
+  92%  { transform: translate(0);          opacity: 0; }
+}
+
+/* tarama çizgisi animasyonu */
+@keyframes scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scan-line {
+  animation: scan 8s linear infinite;
+}
+
+/* ateş parçacıkları */
+@keyframes floatUp {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+.ember-particle {
+  animation: floatUp linear infinite;
+}
+
+/* count-up animasyonu için */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* kart hover efekti */
+.repo-card {
+  transition: all 0.3s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 45, 0, 0.5) !important;
+  box-shadow: 0 8px 32px rgba(255, 45, 0, 0.15);
+}
+
+/* grid arka plan deseni */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,45,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,45,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
