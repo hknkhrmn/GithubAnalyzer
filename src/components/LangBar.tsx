@@ -1,6 +1,9 @@
 import { LangStat } from '../types/github'
 
-// her dil için renk - bunları elle yazdım, api vermiyor
+
+// github api renk vermiyor, elle yazdım
+// linguist reposundan baktım renklere
+
 const LANG_COLORS: Record<string, string> = {
   JavaScript: '#f7df1e',
   TypeScript: '#3178c6',
@@ -21,7 +24,8 @@ const LANG_COLORS: Record<string, string> = {
   'C++':      '#f34b7d',
 }
 
-// renk yoksa default
+// listede yoksa turuncu dönüyor
+
 const getColor = (lang: string) => LANG_COLORS[lang] ?? '#ff6b35'
 
 interface LangBarProps {
@@ -35,7 +39,7 @@ export default function LangBar({ stats }: LangBarProps) {
         // kullanılan diller
       </p>
 
-      {/* renkli bar */}
+        {/* her dil kendi yüzdesi kadar yer kaplıyor */}
       <div className="flex h-2 gap-[2px] mb-5 overflow-hidden">
         {stats.map(({ lang, pct }) => (
           <div
@@ -47,10 +51,11 @@ export default function LangBar({ stats }: LangBarProps) {
         ))}
       </div>
 
-      {/* legend */}
+      {/* renkli nokta + isim + yüzde */}
       <div className="flex flex-wrap gap-x-6 gap-y-2">
         {stats.map(({ lang, pct }) => (
           <div key={lang} className="flex items-center gap-2 text-xs font-mono">
+            {/* flex-shrink-0 olmazsa nokta eziliyor */}
             <span
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ background: getColor(lang) }}

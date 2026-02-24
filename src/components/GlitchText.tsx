@@ -1,5 +1,5 @@
-// glitch effect I used for both titles
-// data-text attribute is required for ::before and ::after in css
+// her iki başlık için de kullandığım glitch efekti
+// css'de ::before ve ::after için data-text özelliği gereklidir.
 
 interface GlitchTextProps {
   text: string
