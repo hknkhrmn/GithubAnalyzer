@@ -3,6 +3,9 @@
 Herhangi bir GitHub kullanıcısının profilini analiz eden uygulama.
 Vite + React + TypeScript + Tailwind CSS ile yapıldı.
 
+## Demo Link
+
+
 ## Özellikler
 
 - Kullanıcı adı gir, profil bilgilerini gör
